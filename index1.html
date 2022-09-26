@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>read csv</title>
+      <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+
+    <py-env>
+    - pandas
+    - numpy
+</py-env>
+</head>
+<body>
+<h1>reading csv file</h1>
+<p>open file</p>
+<p id ="csv"></p>
+<py-script>
+    import pandas as pd
+    from pyodide.http import open_url
+    url_content = open_url("tmdb_5000_movies.csv")
+    df = pd.read_csv(url_content)
+    csv = Element("csv")
+    csv.write(df.head())
+</py-script>
+
+</body>
+</html>

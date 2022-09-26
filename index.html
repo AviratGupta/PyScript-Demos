@@ -1,0 +1,92 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+
+<body>
+  <h1>Type a sample input here</h1>
+  <input type="text" id="test_input" placeholder="type" >
+  <br>
+  <button id="count-button" type="button" pys-onClick="count">Count</button>
+  <br>
+  <button id="add-button" type="button" pys-onClick="add">Add</button>
+  <br>
+  <button id="reverse-button" type="button" pys-onClick="reverse">Reverse</button>
+  <br>
+  <button id="clear-button" type="button" pys-onClick="clear">Clear</button>
+  <div id="test_output"></div>
+
+<br><br><br><br><br><br><br><br>
+<div class="container">
+	<div class="row">
+			<h1>contact us</h1>
+	</div>
+	<div class="row">
+			<h4 style="text-align:center">We'd love to hear from you!</h4>
+	</div>
+	<div class="row input-container">
+			<div class="col-xs-12">
+				<div class="styled-input wide">
+					<input type="text" id="name" required />
+					<label>Name</label>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="styled-input">
+					<input type="text" id="email" required />
+					<label>Email</label>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="styled-input" style="float:right;">
+					<input type="text" id="ph" required />
+					<label>Phone Number</label>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="styled-input wide">
+					<textarea required></textarea>
+					<label>Message</label>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="btn-lrg submit-btn" pys-onClick = "send_message" id="btn-form">Send Message</div>
+			</div>
+
+</div>
+	<br>
+<h1> OUTPUT</h1>
+	<p id ="output"></p>
+
+<py-script>
+
+	inp = Element("test_input")
+	op = Element("test_output")
+
+	def clear(*args, **kwargs):
+		inp.clear()
+
+	def count(*args, **kwargs):
+		num = len(inp.value)
+		op.write(num)
+
+	def reverse(*args, **kwargs):
+		rev = inp.value[::-1]
+		op.write(rev)
+
+	def add(*args, **kwargs):
+		arr = []
+		arr.append(inp.value)
+		return arr
+
+
+	def send_message(*args,**kwargs):
+		result_place = Element("output")
+		result_place.write(f" My name is : {Element('name').value} . My email is : {Element('email').value} and my phone number is : {Element('ph').value}.")
+		#result_place.write(f" my name is {Element('name').value} . my email is: {Element('email').value} and my phone number is {Element('ph').value}")
+</py-script>
+
+  </body>
+</html>
